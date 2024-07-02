@@ -28,8 +28,9 @@ def main():
     # Contenedor para la gráfica
     chart_placeholder = st.empty()
 
-    # Animación
-    for frame in range(100):
+    # Animación infinita
+    frame = 0
+    while True:
         data = generate_data(frame, function, frequency, amplitude)
         chart = alt.Chart(data).mark_line().encode(
             x=alt.X('x', title='x'),
@@ -40,6 +41,7 @@ def main():
         )
         chart_placeholder.altair_chart(chart)
         time.sleep(0.1)  # Pausa para simular la animación
+        frame += 1  # Incrementa el frame para la siguiente iteración
 
 if __name__ == "__main__":
     main()
